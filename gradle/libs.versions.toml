@@ -1,0 +1,103 @@
+[versions]
+agp = "8.13.0"
+coreKtx = "1.19.0"
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+appcompat = "1.8.0"
+material = "1.14.0"
+activityKtx = "1.13.0"
+constraintlayout = "2.2.2"
+
+# 추가
+kotlin = "2.4.10"  # Kotlin 컴파일러 버전=>org.jetbrains.kotlin.android와 kotlinx.serialization 플러그인이 이 버전을 따름
+
+# 추가
+
+retrofit = "3.0.0"  # REST API 통신 라이브러리 (백엔드 호출용)
+okhttp = "5.4.0"    # Retrofit이 내부적으로 쓰는 HTTP 클라이언트
+kotlinxCoroutines = "1.10.2"    # 비동기 처리 (네트워크 호출을 메인 스레드 안 막고 실행)
+kotlinxSerializationJson = "1.8.0" # JSON ↔ Kotlin 객체 변환
+hilt = "2.58"  # 의존성 주입(DI) 프레임워크
+cameraX = "1.6.1"    # '묻다' 화면 카메라 촬영 기능
+coil = "3.5.0"      # 이미지 로딩/표시 (프로필 사진, 진단 사진 등)
+credentials = "1.6.0"   # 구글 로그인(Credential Manager)
+googleid = "1.2.0"   # 구글 ID Token 파싱
+securityCrypto = "1.1.0"    # JWT 토큰을 암호화해서 저장
+
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+# 추가
+
+# Retrofit 본체
+retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+
+# Retrofit이 서버 JSON 응답을 Kotlin 데이터 클래스로 자동 변환하게 해주는 어댑터
+retrofit-converter-kotlinx-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
+
+# 실제 네트워크 요청을 보내는 HTTP 클라이언트
+okhttp-core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+
+# 요청/응답 내용을 Logcat에 찍어줌 (디버깅용)
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+# 코루틴을 안드로이드(메인 스레드)에서 쓸 수 있게 해주는 라이브러리
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+
+# JSON 직렬화/역직렬화 실제 구현체
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+# Hilt 런타임 라이브러리 (@Inject, @HiltViewModel 등 사용하려면 필요)
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+
+# 빌드할 때 Hilt 어노테이션을 읽고 실제 연결 코드를 생성해주는 컴파일러
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+
+# CameraX의 카메라 하드웨어 제어 핵심 모듈
+androidx-camera-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "cameraX" }
+
+# 화면(Fragment/Activity) 생명주기에 맞춰 카메라를 자동으로 켜고 끄는 모듈
+androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraX" }
+
+# 카메라 미리보기를 화면에 띄우는 뷰(PreviewView) 제공
+androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraX" }
+
+# URL로부터 이미지를 불러와 ImageView에 표시
+coil = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coil" }
+
+# 구글 로그인 등 자격증명(Credential)을 요청하는 공용 API
+androidx-credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credentials" }
+
+# 위 credentials API가 구글 플레이 서비스와 연동되게 해주는 확장
+androidx-credentials-play-services-auth = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credentials" }
+
+# 로그인 후 받은 구글 ID Token을 파싱하는 라이브러리
+googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
+
+# EncryptedSharedPreferences 제공 (JWT를 암호화해서 로컬 저장)
+androidx-security-crypto = { group = "androidx.security", name = "security-crypto", version.ref = "securityCrypto" }
+
+
+
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+
+# kotlin 추가
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+# 명시적으로 Kotlin 컴파일을 담당하게 됨
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+# Hilt의 코드 자동생성을 빌드 과정에 연결해주는 그레이들 플러그인
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
