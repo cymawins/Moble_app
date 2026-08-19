@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -32,6 +34,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 }
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_11)   // Kotlin 컴파일러가 생성하는 바이트코드를 JVM 11 타겟으로 맞춤 (Java의 compileOptions와 동일하게)
+    }
+}
 
 dependencies {
     implementation(libs.androidx.activity.ktx)
@@ -46,4 +53,23 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+
+    // 네트워킹
+    implementation(libs.retrofit.core)
+    implementation(libs.retrofit.converter.kotlinx.serialization)
+    implementation(libs.okhttp.core)
+    implementation(libs.okhttp.logging.interceptor)
+
+    // 비동기처리
+    implementation(libs.kotlinx.coroutines.android)
+
+    // JSON 직렬화
+    implementation(libs.kotlinx.serialization.json)
+
+    // 인증 (Credential Manager)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
+    implementation(libs.androidx.security.crypto)
+
 }

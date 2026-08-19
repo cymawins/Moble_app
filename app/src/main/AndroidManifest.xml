@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 네트워크 통신 (Retrofit API 호출) 허용. 이게 없으면 앱이 인터넷 자체를 못 씀 -->
+    <!-- CAMERA 권한은 '묻다' 기능 작업 때 별도로 추구할 예정 -->
+
     <application
+
+        android:name=".KiudaApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
