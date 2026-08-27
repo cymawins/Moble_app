@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kiuda_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/screen_margin_horizontal"
+        android:paddingVertical="@dimen/screen_margin_vertical">
+
+        <TextView
+            style="@style/TextAppearance.Kiuda.HeadlineLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔔 실시간 센서 &amp; 병해충 알림" />
+
+        <TextView
+            style="@style/TextAppearance.Kiuda.BodyMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="스마트 센서 환경 측정 수치 및 국가농작물병해충 예보를 확인하세요." />
+
+        <!-- Sensor Status Card 1 (Moisture Warning) -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Kiuda.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.Kiuda.TitleMedium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="💧 토양 수분 경보 (1구역)"
+                        android:textColor="@color/kiuda_warning" />
+
+                    <TextView
+                        style="@style/TextAppearance.Kiuda.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10분 전" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/TextAppearance.Kiuda.BodyMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="현재 수분 18% (목표 45%). 건조 주의 단계입니다." />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ask_sensor_1"
+                    style="@style/Widget.Kiuda.Button.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="🤖 AI에게 관수 처방 묻기" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Sensor Status Card 2 (Pest Alert) -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.Kiuda.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.Kiuda.TitleMedium"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="⚠ 토마토 잎곰팡이병 예보 (주의)"
+                        android:textColor="@color/kiuda_error" />
+
+                    <TextView
+                        style="@style/TextAppearance.Kiuda.Caption"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="오늘 08:00" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/TextAppearance.Kiuda.BodyMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="고온 다습한 날씨 지속으로 잎곰팡이병 발생 위험이 높아졌습니다." />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_ask_sensor_2"
+                    style="@style/Widget.Kiuda.Button.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="🤖 AI에게 방제 방법 묻기" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

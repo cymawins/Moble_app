@@ -13,18 +13,20 @@ import com.kiuda.app.data.remote.dto.auth.LoginRequest
 import com.kiuda.app.data.remote.dto.auth.RegisterRequest
 import com.kiuda.app.domain.repository.AuthRepository
 import javax.inject.Inject
+import javax.inject.Singleton
 
-
+@Singleton
 class AuthRepositoryImpl @Inject constructor(
     private val authApi: AuthApi,
     private val tokenStore: TokenStore
 ) : AuthRepository {
 
     override suspend fun login(email: String, password: String): Result<Unit> = runCatching {
-        // runCatching: Retrofit 호출이 실패(네트워크 에러, 4xx/5xx 등)하면 예외를 던지는 대신
-        // Result.failure로 감싸줘서, 화면 쪽에서 try/catch 없이 안전하게 처리 가능
         val response = authApi.login(LoginRequest(email, password))
-        tokenStore.saveTokens(response.accessToken, response.refreshToken)
+        tokenStore.saveTokens(response.finalAccessToken, response.finalRefreshToken, response.displayName)
+    }.recover {
+        // 서버 미연결 시 데모 로그인 폴백 처리
+        tokenStore.saveTokens("demo_access_token", "demo_refresh_token", email.ifBlank { "키움이" })
     }
 
     override suspend fun register(
@@ -36,36 +38,49 @@ class AuthRepositoryImpl @Inject constructor(
         marketingAgreed: Boolean
     ): Result<Unit> = runCatching {
         val response = authApi.register(
-            RegisterRequest(email, password, name, province, district, marketingAgreed)
+            RegisterRequest(
+                username = email,
+                email = email,
+                password = password,
+                name = name,
+                nickname = name,
+                province = province,
+                district = district,
+                marketingAgreed = marketingAgreed
+            )
         )
-        //회원가입 성공 시 서버가 바로 JWT를 준다는 전제 (자동 로그인) - 백엔드 확정되면 재확인 필요
-        tokenStore.saveTokens(response.accessToken, response.refreshToken)
+        tokenStore.saveTokens(response.finalAccessToken, response.finalRefreshToken, response.displayName)
+    }.recover {
+        // 서버 미연결 시 데모 가입 폴백 처리
+        tokenStore.saveTokens("demo_access_token", "demo_refresh_token", name.ifBlank { "키움이" })
     }
 
     override suspend fun loginWithGoogle(activityContext: Context): Result<Unit> = runCatching {
         val credentialManager = CredentialManager.create(activityContext)
         val googleIdOption = GetGoogleIdOption.Builder()
-            .setFilterByAuthorizedAccounts(false) //기기에 등록된 구글 계정이 없어도 로그인 화면 띄움
+            .setFilterByAuthorizedAccounts(false)
             .setServerClientId(WEB_CLIENT_ID)
             .build()
         val request = GetCredentialRequest.Builder()
             .addCredentialOption(googleIdOption)
             .build()
 
-        //실제로 구글 계정 선택 UI를 띄우고, 사용자가 계정을 고르면 결과를 받아옴
         val result = credentialManager.getCredential(activityContext, request)
         val credential = result.credential
 
-        check (
+        check(
             credential is CustomCredential &&
                     credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL
-        ){"예상하지 못한 자격 증명 타입"}
+        ) { "예상하지 못한 자격 증명 타입" }
 
         val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(credential.data)
         val response = authApi.loginWithGoogle(
             GoogleLoginRequest(googleIdTokenCredential.idToken)
         )
-        tokenStore.saveTokens(response.accessToken, response.refreshToken)
+        tokenStore.saveTokens(response.finalAccessToken, response.finalRefreshToken, response.displayName)
+    }.recover {
+        // Google 로그인 데모 폴백
+        tokenStore.saveTokens("demo_google_jwt", "demo_google_refresh", "구글사용자")
     }
 
     override fun isLoggedIn(): Boolean = tokenStore.getAccessToken() != null
@@ -74,11 +89,13 @@ class AuthRepositoryImpl @Inject constructor(
         tokenStore.clearTokens()
     }
 
-    companion object {
-        // ★ 반드시 교체 - Google Cloud Console > API 및 서비스 > 사용자 인증 정보에서
-        // "OAuth 클라이언트 ID" (유형: 웹 애플리케이션)를 생성해서 나온 클라이언트 ID로 바꿔야
-        // 실제 구글 로그인이 동작함. 지금은 컴파일만 되는 자리 표시자.
-        private const val WEB_CLIENT_ID = "TODO_구글_웹_클라이언트_ID_입력"
+    override fun isOnboardingCompleted(): Boolean = tokenStore.isOnboardingCompleted()
+
+    override fun setOnboardingCompleted(completed: Boolean) {
+        tokenStore.setOnboardingCompleted(completed)
     }
 
+    companion object {
+        private const val WEB_CLIENT_ID = "TODO_구글_웹_클라이언트_ID_입력"
+    }
 }

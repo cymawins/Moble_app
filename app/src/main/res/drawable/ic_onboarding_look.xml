@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 곡식 벼 이삭 (Wheat / Grain Sheaf) 벡터 아이콘 -->
+    <path
+        android:fillColor="@color/kiuda_primary"
+        android:pathData="M11,22V15C9,15 7.5,13.5 7.5,11.5C9.5,11.5 11,13 11,15V10C9,10 7.5,8.5 7.5,6.5C9.5,6.5 11,8 11,10V5C9.5,5 8.5,4 8.5,2.5C10,2.5 11,3.5 11,5V2H13V5C13,3.5 14,2.5 15.5,2.5C15.5,4 14.5,5 13,5V10C13,8 14.5,6.5 16.5,6.5C16.5,8.5 15,10 13,10V15C13,13 14.5,11.5 16.5,11.5C16.5,13.5 15,15 13,15V22H11Z" />
+</vector>
+
+
+

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true"
+    android:background="@color/kiuda_background"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="28dp"
+        android:paddingRight="28dp"
+        android:paddingTop="36dp"
+        android:paddingBottom="36dp"
+        android:gravity="center_horizontal">
+
+        <!-- 공식 CI 로고 (잎 원형 + 키:우다 타이포그래피) -->
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="160dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/kiuda_ci_logo" />
+
+        <!-- 짧은 서브카피 문구 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:letterSpacing="-0.01"
+            android:text="함께 하는 초록빛 일상을 시작하세요"
+            android:textColor="@color/kiuda_text_secondary"
+            android:textSize="14sp" />
+
+        <!-- 로그인 입력 서체 및 순백색 Surface 카드 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_neo_card"
+            android:elevation="1dp"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- 이메일 라벨 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이메일"
+                android:textColor="@color/kiuda_text_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxStrokeColor="@color/kiuda_primary"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="demo@kiuda.com 또는 아이디"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:padding="14dp"
+                    android:textColor="@color/kiuda_text_primary"
+                    android:textColorHint="@color/kiuda_text_tertiary"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 비밀번호 라벨 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="비밀번호"
+                android:textColor="@color/kiuda_text_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxCornerRadiusBottomEnd="14dp"
+                app:boxCornerRadiusBottomStart="14dp"
+                app:boxCornerRadiusTopEnd="14dp"
+                app:boxCornerRadiusTopStart="14dp"
+                app:boxStrokeColor="@color/kiuda_primary"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/kiuda_text_secondary"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="password123"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:padding="14dp"
+                    android:textColor="@color/kiuda_text_primary"
+                    android:textColorHint="@color/kiuda_text_tertiary"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 메인 로그인 Primary 버튼 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/kiuda_primary"
+                android:elevation="2dp"
+                android:text="로그인"
+                android:textColor="@color/kiuda_on_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="14dp" />
+        </LinearLayout>
+
+        <!-- 수평 구분선 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/kiuda_outline" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:text="또는"
+                android:textColor="@color/kiuda_text_tertiary"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/kiuda_outline" />
+        </LinearLayout>
+
+        <!-- Google 소셜 로그인 Outlined 버튼 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoogleLogin"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="18dp"
+            android:text="Google로 계속하기"
+            android:textColor="@color/kiuda_text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="14dp"
+            app:strokeColor="@color/kiuda_outline"
+            app:strokeWidth="1.5dp" />
+
+        <!-- 회원가입 전환 텍스트 링크 버튼 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGoSignup"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:text="계정이 없으신가요?  회원가입"
+            android:textColor="@color/kiuda_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- 로딩 인디케이터 -->
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:indeterminateTint="@color/kiuda_primary"
+            android:visibility="gone" />
+
+        <!-- 데모 계정 안내 칩 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_chip"
+            android:paddingLeft="14dp"
+            android:paddingTop="6dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="6dp"
+            android:text="데모  ·  demo@kiuda.com / password123"
+            android:textColor="@color/kiuda_text_secondary"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</ScrollView>

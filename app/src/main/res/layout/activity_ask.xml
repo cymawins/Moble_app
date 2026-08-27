@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/kiuda_background"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/kiuda_background"
+        app:navigationIconTint="@color/kiuda_text_primary"
+        app:title="🤖 AI 묻다 · 온새미"
+        app:titleTextColor="@color/kiuda_text_primary" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- 1. 작물 상태 카드 (외부 컨텍스트 & 센서 요약 & "이 상태로 AI에게 묻기") -->
+            <include
+                android:id="@+id/cardCropStatus"
+                layout="@layout/layout_crop_status_card" />
+
+            <!-- 2. 입력 모드 전환 세그먼트/칩 그룹 (사진 / 음성 / 텍스트) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="질문 입력 방식 선택"
+                android:textColor="@color/kiuda_text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipModePhoto"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="📷 사진 촬영"
+                    android:textColor="@color/kiuda_text_primary"
+                    app:chipBackgroundColor="@color/kiuda_primary_container" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipModeVoice"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🎤 음성 입력"
+                    android:textColor="@color/kiuda_text_primary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipModeText"
+                    style="@style/Widget.Material3.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="💬 텍스트 입력"
+                    android:textColor="@color/kiuda_text_primary" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- =================================================================== -->
+            <!-- [모드 1] 사진 촬영 진단 컨테이너 (기존 CameraX 파이프라인 완전 유지) -->
+            <!-- =================================================================== -->
+            <LinearLayout
+                android:id="@+id/containerPhotoMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:background="@drawable/bg_neo_card"
+                    android:padding="4dp">
+
+                    <androidx.camera.view.PreviewView
+                        android:id="@+id/previewView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#1A2E1A" />
+                </FrameLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCapture"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="@color/kiuda_primary"
+                    android:text="📷  사진 촬영하기"
+                    android:textColor="@color/kiuda_on_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp" />
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="작물 잎을 화면 중앙에 맞춰 촬영해 주세요."
+                    android:textColor="@color/kiuda_text_secondary"
+                    android:textSize="13sp" />
+
+                <!-- 사진 분석 후 예측 질문 섹션 (기존 보유) -->
+                <TextView
+                    android:id="@+id/tvPredictTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="온새미가 사진으로 짐작한 증상 질문"
+                    android:textColor="@color/kiuda_text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPredictHint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="해당되는 항목을 선택하거나 아래에 추가 질문을 입력하세요."
+                    android:textColor="@color/kiuda_text_tertiary"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/containerSymptoms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_neo_card"
+                    android:minHeight="48dp"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvCustomLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="추가 질문 작성하기"
+                    android:textColor="@color/kiuda_text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCustomQuestion"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:visibility="gone"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="@color/kiuda_primary"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCustomQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="예: 잎 끝이 마르는데 물 부족일까요?"
+                        android:inputType="textMultiLine"
+                        android:maxLines="4"
+                        android:minLines="2"
+                        android:padding="12dp"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDiagnose"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="18dp"
+                    android:backgroundTint="@color/kiuda_primary"
+                    android:enabled="false"
+                    android:text="🌿  AI 온새미 사진 진단하기"
+                    android:textColor="@color/kiuda_on_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp" />
+
+            </LinearLayout>
+
+            <!-- =================================================================== -->
+            <!-- [모드 2] 음성 질문 컨테이너 (SpeechRecognizer 연동) -->
+            <!-- =================================================================== -->
+            <LinearLayout
+                android:id="@+id/containerVoiceMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingVertical="12dp"
+                android:visibility="gone">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/kiuda_surface"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="@color/kiuda_outline_variant"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:id="@+id/tvVoiceStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="마이크 버튼을 누르고 말씀하세요"
+                            android:textColor="@color/kiuda_text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="예: '잎에 물주는 주기랑 영양제 추천해줘'"
+                            android:textColor="@color/kiuda_text_tertiary"
+                            android:textSize="12sp" />
+
+                        <!-- 마이크 녹음 버튼 -->
+                        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                            android:id="@+id/btnVoiceRecord"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:contentDescription="음성 녹음 버튼"
+                            app:backgroundTint="@color/kiuda_primary"
+                            app:fabCustomSize="72dp"
+                            app:maxImageSize="36dp"
+                            app:srcCompat="@android:drawable/ic_btn_speak_now"
+                            app:tint="@color/kiuda_on_primary" />
+
+                        <!-- 변환된 텍스트 확인 및 직접 수정 필드 -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilVoiceQuestion"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            app:boxCornerRadiusBottomEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxStrokeColor="@color/kiuda_primary"
+                            app:hintEnabled="false">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etVoiceQuestion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="음성 인식 결과가 여기에 표시됩니다."
+                                android:inputType="textMultiLine"
+                                android:maxLines="4"
+                                android:minLines="2"
+                                android:padding="12dp"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnVoiceDiagnose"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="16dp"
+                            android:backgroundTint="@color/kiuda_primary"
+                            android:text="🗣️ 음성으로 온새미에게 질문하기"
+                            android:textColor="@color/kiuda_on_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            app:cornerRadius="12dp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- =================================================================== -->
+            <!-- [모드 3] 텍스트 질문 컨테이너 (직접 입력 & 퀵 템플릿 질문) -->
+            <!-- =================================================================== -->
+            <LinearLayout
+                android:id="@+id/containerTextMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="추천 질문 템플릿"
+                    android:textColor="@color/kiuda_text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroupQuickPrompts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipQuick1"
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="💧 물 주는 주기 진단" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipQuick2"
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🧪 적정 비료/영양제 문의" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipQuick3"
+                        style="@style/Widget.Material3.Chip.Suggestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🐛 병해충 예방 관리법" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilTextQuestion"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="12dp"
+                    app:boxCornerRadiusBottomStart="12dp"
+                    app:boxCornerRadiusTopEnd="12dp"
+                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxStrokeColor="@color/kiuda_primary"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etTextQuestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="작물의 상태나 궁금한 점을 구체적으로 입력해주세요."
+                        android:inputType="textMultiLine"
+                        android:maxLines="5"
+                        android:minLines="3"
+                        android:padding="14dp"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTextDiagnose"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="@color/kiuda_primary"
+                    android:text="💬 텍스트로 온새미에게 질문하기"
+                    android:textColor="@color/kiuda_on_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp" />
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:indeterminateTint="@color/kiuda_primary"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

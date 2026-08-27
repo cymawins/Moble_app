@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Kiuda.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="@dimen/radius_large"
+    app:cardElevation="@dimen/elevation_card_low"
+    app:strokeColor="@color/kiuda_outline_variant"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="병"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/kiuda_primary"
+                android:background="@drawable/bg_pill_soft"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                tools:text="병" />
+
+            <TextView
+                android:id="@+id/tvCrop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="고추"
+                android:textSize="12sp"
+                android:textColor="@color/kiuda_text_secondary"
+                tools:text="고추" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="탄저병"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/kiuda_text_primary"
+            android:includeFontPadding="false"
+            tools:text="고추 탄저병" />
+
+        <TextView
+            android:id="@+id/tvSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="증상 요약"
+            android:textSize="13sp"
+            android:textColor="@color/kiuda_text_secondary"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:lineSpacingExtra="4dp"
+            android:includeFontPadding="false"
+            tools:text="과실에 암갈색의 오목하게 파인 점무늬가 생기며 습도가 높을 때 핑키빛 포자가 병반 위에 형성됩니다." />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

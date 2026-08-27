@@ -26,22 +26,35 @@ class TokenStore @Inject constructor(
         EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
     )
 
-    fun saveTokens(accessToken: String, refreshToken: String) {
+    fun saveTokens(accessToken: String, refreshToken: String, userName: String? = null) {
         prefs.edit()
             .putString(KEY_ACCESS_TOKEN, accessToken)
             .putString(KEY_REFRESH_TOKEN, refreshToken)
+            .apply {
+                if (userName != null) putString(KEY_USER_NAME, userName)
+            }
             .apply()
     }
 
     fun getAccessToken(): String? = prefs.getString(KEY_ACCESS_TOKEN, null)
     fun getRefreshToken(): String? = prefs.getString(KEY_REFRESH_TOKEN, null)
+    fun getUserName(): String? = prefs.getString(KEY_USER_NAME, null)
 
     fun clearTokens(){
         //로그아웃시 호출 - 저장된 토큰 전부 삭제
         prefs.edit().clear().apply()
     }
+
+    fun isOnboardingCompleted(): Boolean = prefs.getBoolean(KEY_ONBOARDING_COMPLETED, false)
+
+    fun setOnboardingCompleted(completed: Boolean) {
+        prefs.edit().putBoolean(KEY_ONBOARDING_COMPLETED, completed).apply()
+    }
+
     companion object {
         private const val KEY_ACCESS_TOKEN = "access_token"
         private const val KEY_REFRESH_TOKEN = "refresh_token"
+        private const val KEY_USER_NAME = "user_name"
+        private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
     }
 }

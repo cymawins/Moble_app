@@ -13,7 +13,7 @@ interface AuthApi {
     @POST("auth/login")
     suspend fun login(@Body request: LoginRequest): AuthResponse
 
-    @POST("auth/register")
+    @POST("auth/signup")
     suspend fun register(@Body request: RegisterRequest): AuthResponse
 
     @POST("auth/google")

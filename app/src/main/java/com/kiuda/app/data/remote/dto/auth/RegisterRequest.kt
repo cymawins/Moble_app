@@ -3,11 +3,13 @@ package com.kiuda.app.data.remote.dto.auth
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RegisterRequest (
+data class RegisterRequest(
+    val username: String? = null,
     val email: String,
     val password: String,
     val name: String,
-    val province: String? = null, //회원가입 2단계 지역 선택 - User.province
-    val district: String? = null, //User.district
-    val marketingAgreed: Boolean = false //User.marketing_agreed
+    val nickname: String? = null,
+    val province: String? = null,
+    val district: String? = null,
+    val marketingAgreed: Boolean = false
 )

@@ -33,6 +33,17 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures {
+        viewBinding = true
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
 }
 kotlin {
     compilerOptions {
@@ -72,4 +83,19 @@ dependencies {
     implementation(libs.googleid)
     implementation(libs.androidx.security.crypto)
 
+    // UI 추가 컴포넌트 & 이미지 (Navigation, Coil, SwipeRefreshLayout, CoordinatorLayout, Fragment KTX)
+    val navVersion = "2.7.7"
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    implementation("io.coil-kt:coil:2.5.0")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
+    // CameraX (16 KB Page Alignment 지원 1.4.1 버전)
+    val cameraxVersion = "1.4.1"
+    implementation("androidx.camera:camera-core:$cameraxVersion")
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
 }

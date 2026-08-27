@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingTop="24dp"
+    android:paddingBottom="24dp">
+
+    <!-- 소프트 원형 일러스트/아이콘 백그라운드 영역 -->
+    <FrameLayout
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_logo_circle"
+        android:backgroundTint="@color/kiuda_primary_container">
+
+        <ImageView
+            android:id="@+id/iv_onboarding_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:contentDescription="온보딩 아이콘"
+            android:src="@drawable/ic_onboarding_look"
+            app:tint="@color/kiuda_primary" />
+    </FrameLayout>
+
+    <!-- STEP 배지 태그 -->
+    <TextView
+        android:id="@+id/tv_step_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/bg_chip"
+        android:backgroundTint="@color/kiuda_secondary_container"
+        android:paddingLeft="14dp"
+        android:paddingTop="6dp"
+        android:paddingRight="14dp"
+        android:paddingBottom="6dp"
+        android:text="STEP 01. 보다"
+        android:textColor="@color/kiuda_on_secondary_container"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <!-- 핵심 타이틀 -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:letterSpacing="-0.02"
+        android:text="내 작물 상태를 한눈에"
+        android:textColor="@color/kiuda_text_primary"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <!-- 서브 설명 카피 -->
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:text="내 작물이 지금 어떤 상태인지\n한눈에 확인하고 정성껏 케어해보세요."
+        android:textColor="@color/kiuda_text_secondary"
+        android:textSize="15sp" />
+
+</LinearLayout>

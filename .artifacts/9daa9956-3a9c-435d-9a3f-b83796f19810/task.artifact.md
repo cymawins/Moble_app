@@ -1,0 +1,3 @@
+- [/] Modify `activity_signup.xml` to add `imeOptions` and `singleLine`
+- [ ] Modify `activity_login.xml` to add `imeOptions` and `singleLine`
+- [ ] Verify changes with `analyze_file`

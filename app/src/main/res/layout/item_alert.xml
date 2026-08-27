@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Kiuda.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="@dimen/radius_large"
+    app:cardElevation="@dimen/elevation_card_low"
+    app:strokeColor="@color/kiuda_outline_variant"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp">
+
+        <!-- 상단 작물 위치 정보 & 위험도 레벨 배지 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvPlantName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🌱 방울토마토  ·  베란다 정원 1구역"
+                android:textColor="@color/kiuda_text_secondary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:text="🌱 방울토마토  ·  베란다 정원 1구역" />
+
+            <TextView
+                android:id="@+id/tvAlertBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_chip"
+                android:backgroundTint="@color/kiuda_error_container"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="위험 / 경보"
+                android:textColor="@color/kiuda_error"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="위험 / 경보" />
+        </LinearLayout>
+
+        <!-- 알림 메인 제목 -->
+        <TextView
+            android:id="@+id/tvAlertTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="💧 토양 수분 부족 경고 (15%)"
+            android:textColor="@color/kiuda_text_primary"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:includeFontPadding="false"
+            tools:text="💧 토양 수분 부족 경고 (15%)" />
+
+        <!-- 주요 센서 측정 수치 -->
+        <TextView
+            android:id="@+id/tvMetrics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="측정 수치: 토양수분 15% (기준 35% 미만) · 온도 29°C"
+            android:textColor="@color/kiuda_text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            tools:text="측정 수치: 토양수분 15% (기준 35% 미만) · 온도 29°C" />
+
+        <!-- 상세 원인 및 요약 설명 -->
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:lineSpacingExtra="4dp"
+            android:text="최근 24시간 동안 토양 수분이 급격히 감소했습니다. 빠른 관수가 필요합니다."
+            android:textColor="@color/kiuda_text_secondary"
+            android:textSize="13sp"
+            android:includeFontPadding="false"
+            tools:text="최근 24시간 동안 토양 수분이 급격히 감소했습니다. 빠른 관수가 필요합니다." />
+
+        <!-- 하단 파이프라인 액션 버튼 2개 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <!-- 왜 그런가요? 버튼 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWhyGuide"
+                style="@style/Widget.Kiuda.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="왜 그런가요?"
+                android:textColor="@color/kiuda_primary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/kiuda_primary" />
+
+            <!-- AI 묻다 버튼 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAskAi"
+                style="@style/Widget.Kiuda.Button.Primary"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1.2"
+                android:text="🤖 AI 묻다 (상담하기)"
+                android:textColor="@color/kiuda_on_primary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

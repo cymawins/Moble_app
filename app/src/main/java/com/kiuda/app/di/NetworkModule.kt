@@ -20,9 +20,8 @@ import javax.inject.Singleton
 //여기서 제공하는 객체들은 앱 실행 동안 딱 한번만 만들어져 앱 전역에서 재사용됨
 @InstallIn (SingletonComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "http://10.0.2.2:3000/"
-    // ★임시값★ — 10.0.2.2는 안드로이드 에뮬레이터에서 "내 컴퓨터(localhost)"를 가리키는 특수 주소.
-    // 팀 백엔드(Node/Express) 개발 서버 주소가 나오면 반드시 이 값을 교체해야 함
+    private const val BASE_URL = "http://10.0.2.2:8080/api/"
+    // 안드로이드 에뮬레이터에서 내 PC의 kiuda-dev-server(포트 8080)를 바라보는 주소
 
     @Provides
     @Singleton
@@ -58,7 +57,20 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideAuthApi(retrofit: Retrofit): AuthApi =
-        //위에서 만든 Retrofit 인스턴스로, AuthApi 인터페이스의 실제 구현체를 자동 생성
         retrofit.create(AuthApi::class.java)
 
+    @Provides
+    @Singleton
+    fun provideDashboardApi(retrofit: Retrofit): com.kiuda.app.data.remote.api.DashboardApi =
+        retrofit.create(com.kiuda.app.data.remote.api.DashboardApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDiagnosisApi(retrofit: Retrofit): com.kiuda.app.data.remote.api.DiagnosisApi =
+        retrofit.create(com.kiuda.app.data.remote.api.DiagnosisApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideNcpmsApi(retrofit: Retrofit): com.kiuda.app.data.remote.api.NcpmsApi =
+        retrofit.create(com.kiuda.app.data.remote.api.NcpmsApi::class.java)
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutEmptyState"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_3xl">
+
+    <ImageView
+        android:id="@+id/ivEmptyIcon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_kiuda_leaf"
+        app:tint="@color/kiuda_text_tertiary" />
+
+    <TextView
+        android:id="@+id/tvEmptyTitle"
+        style="@style/TextAppearance.Kiuda.TitleMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_l"
+        android:gravity="center"
+        android:text="등록된 데이터가 없습니다"
+        android:textColor="@color/kiuda_text_secondary" />
+
+    <TextView
+        android:id="@+id/tvEmptySubtitle"
+        style="@style/TextAppearance.Kiuda.BodyMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_s"
+        android:gravity="center"
+        android:text="새로운 항목을 추가하고 관리해보세요"
+        android:textColor="@color/kiuda_text_tertiary" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEmptyAction"
+        style="@style/Widget.Kiuda.Button.Primary.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_xl"
+        android:text="추가하기"
+        android:visibility="gone"
+        tools:visibility="visible" />
+</LinearLayout>

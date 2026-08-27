@@ -1,5 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Basic Palette -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- =================================================================== -->
+    <!-- Kiuda Material 3 Design Tokens (Web-Unified Palette)                 -->
+    <!-- =================================================================== -->
+
+    <!-- Primary Brand: 깊고 차분한 포레스트 그린 (웹 Primary 버튼, 강조, 진행바) -->
+    <color name="kiuda_primary">#2E6F40</color>
+    <color name="kiuda_on_primary">#FFFFFF</color>
+    <!-- Primary Container: 따뜻하고 부드러운 세이지 민트 톤 (강조 카드, 연한 칩 배경) -->
+    <color name="kiuda_primary_container">#E2F0D9</color>
+    <color name="kiuda_on_primary_container">#13381B</color>
+
+    <!-- Secondary: 자연스러운 유칼립투스/올리브 톤 (보조 배지, 탭, 아이콘 틴트) -->
+    <color name="kiuda_secondary">#52796F</color>
+    <color name="kiuda_on_secondary">#FFFFFF</color>
+    <color name="kiuda_secondary_container">#DCEBE5</color>
+    <color name="kiuda_on_secondary_container">#17342B</color>
+
+    <!-- Tertiary: 유기농 테라코타/흙빛 감성 (식물 토양, 영양 상태, 웜톤 포인트) -->
+    <color name="kiuda_tertiary">#8B6F47</color>
+    <color name="kiuda_on_tertiary">#FFFFFF</color>
+    <color name="kiuda_tertiary_container">#F7ECE1</color>
+    <color name="kiuda_on_tertiary_container">#3B2712</color>
+
+    <!-- Background & Surface: 웹의 핵심인 따뜻한 크림/오프화이트 & 순백 카드 -->
+    <!-- Background: 웹 전체 배경인 포근하고 자연스러운 오프화이트 크림 톤 -->
+    <color name="kiuda_background">#FAF7F2</color>
+    <color name="kiuda_on_background">#1E251F</color>
+
+    <!-- Surface: 오프화이트 배경 위에서 돋보이는 맑은 순백색 카드 Surface -->
+    <color name="kiuda_surface">#FFFFFF</color>
+    <color name="kiuda_on_surface">#1E251F</color>
+
+    <!-- Surface Variant: 검색창, 입력 필드, 비활성 배경용 은은한 웜 샌드 톤 -->
+    <color name="kiuda_surface_variant">#F0EDE6</color>
+    <color name="kiuda_on_surface_variant">#525A52</color>
+
+    <!-- Outlines & Borders: 카드와 구분을 위한 섬세하고 부드러운 외곽선 -->
+    <color name="kiuda_outline">#D8D2C7</color>
+    <color name="kiuda_outline_variant">#EBE6DC</color>
+
+    <!-- Error / Danger: 질병/해충 경고 및 오류용 딥 코랄 레드 -->
+    <color name="kiuda_error">#D9483B</color>
+    <color name="kiuda_on_error">#FFFFFF</color>
+    <color name="kiuda_error_container">#FDF2F0</color>
+    <color name="kiuda_on_error_container">#690005</color>
+
+    <!-- =================================================================== -->
+    <!-- Extended Domain Feedback & Status Tokens (식물 상태/알림/체크리스트) -->
+    <!-- =================================================================== -->
+
+    <!-- Warning / Dry: 건조/수분 부족/주의 알림용 웜 엠버 테라코타 -->
+    <color name="kiuda_warning">#E67E22</color>
+    <color name="kiuda_on_warning">#FFFFFF</color>
+    <color name="kiuda_warning_container">#FFF7ED</color>
+    <color name="kiuda_on_warning_container">#78350F</color>
+
+    <!-- Success / Good: 물주기 완료/건강한 성장/정상 상태용 싱그러운 그린 -->
+    <color name="kiuda_success">#388E3C</color>
+    <color name="kiuda_on_success">#FFFFFF</color>
+    <color name="kiuda_success_container">#E8F5E9</color>
+    <color name="kiuda_on_success_container">#1B5E20</color>
+
+    <!-- Info / Moisture: 급수 정보/습도/안내용 선명한 스카이 블루 -->
+    <color name="kiuda_info">#2563EB</color>
+    <color name="kiuda_on_info">#FFFFFF</color>
+    <color name="kiuda_info_container">#EFF6FF</color>
+    <color name="kiuda_on_info_container">#1E40AF</color>
+
+    <!-- Neutral & Text Helpers: 타이포그래피 계층 가독성 보장 -->
+    <color name="kiuda_text_primary">#1E251F</color>     <!-- 메인 타이틀, 주요 텍스트 (가독성 높은 딥 차콜) -->
+    <color name="kiuda_text_secondary">#525A52</color>   <!-- 설명문, 서브 타이틀 (차분한 딥 샌드 잉크) -->
+    <color name="kiuda_text_tertiary">#8A938A</color>    <!-- 캡션, 비활성 힌트, 날짜 표시 -->
+    <color name="kiuda_divider">#EBE6DC</color>          <!-- 리스트 구분선 -->
+
+    <!-- Icon Tints: 아이콘 상태별 틴트 가이드 -->
+    <color name="kiuda_icon_active">#2E6F40</color>      <!-- 활성화된 탭/아이콘 (Primary) -->
+    <color name="kiuda_icon_inactive">#8A938A</color>    <!-- 비활성화된 탭/아이콘 (Muted Grey) -->
+    <color name="kiuda_icon_on_surface">#525A52</color>  <!-- 일반 카드 내 설명 아이콘 -->
+
+    <!-- =================================================================== -->
+    <!-- Legacy & Neumorphism Backward Compatibility Aliases                -->
+    <!-- (기존 레이아웃 리팩토링 시 부드러운 전환을 위한 하위 호환 매핑)     -->
+    <!-- =================================================================== -->
+    <color name="neo_bg">@color/kiuda_background</color>
+    <color name="neo_bg_2">@color/kiuda_surface_variant</color>
+    <color name="neo_light">#FDFBF7</color>
+    <color name="neo_cream">#FAF7F2</color>
+    <color name="neo_text">@color/kiuda_text_primary</color>
+    <color name="neo_text_dark">#13381B</color>
+    <color name="neo_muted">@color/kiuda_text_secondary</color>
+    <color name="neo_muted_light">@color/kiuda_text_tertiary</color>
+    <color name="neo_green">@color/kiuda_primary</color>
+    <color name="neo_green_primary">@color/kiuda_primary</color>
+    <color name="neo_green_dark">#1E4F2B</color>
+    <color name="neo_green_soft">@color/kiuda_primary_container</color>
+    <color name="neo_leaf">#4CAF50</color>
+    <color name="neo_soil">@color/kiuda_tertiary</color>
+    <color name="neo_border">@color/kiuda_outline</color>
+    <color name="neo_shadow_dark">#E2DDD4</color>
+    <color name="neo_shadow_light">#FFFFFF</color>
+    <color name="neo_white">@color/kiuda_surface</color>
+    <color name="neo_card">@color/kiuda_surface</color>
+    <color name="neo_warning">@color/kiuda_warning</color>
+    <color name="neo_error_bg">@color/kiuda_error_container</color>
+    <color name="neo_error">@color/kiuda_error</color>
+    <color name="neo_blue">@color/kiuda_info</color>
+    <color name="neo_overlay">#1A211B</color>
+
+    <color name="green_primary">@color/kiuda_primary</color>
+    <color name="green_dark">#1E4F2B</color>
+    <color name="blue_primary">@color/kiuda_info</color>
+    <color name="bg_light">@color/kiuda_background</color>
 </resources>

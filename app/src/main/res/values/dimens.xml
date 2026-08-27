@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- =================================================================== -->
+    <!-- Kiuda Spacing Scale (4dp Standard Grid)                            -->
+    <!-- =================================================================== -->
+    <dimen name="spacing_2xs">2dp</dimen>
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_s">8dp</dimen>
+    <dimen name="spacing_m">12dp</dimen>
+    <dimen name="spacing_l">16dp</dimen>
+    <dimen name="spacing_xl">20dp</dimen>
+    <dimen name="spacing_2xl">24dp</dimen>
+    <dimen name="spacing_3xl">32dp</dimen>
+    <dimen name="spacing_4xl">40dp</dimen>
+    <dimen name="spacing_5xl">48dp</dimen>
+
+    <!-- =================================================================== -->
+    <!-- Corner Radius Tokens (웹의 라운딩 톤앤매너 계층)                      -->
+    <!-- =================================================================== -->
+    <dimen name="radius_small">8dp</dimen>       <!-- 칩, 태그, 소형 배지 -->
+    <dimen name="radius_medium">12dp</dimen>     <!-- 버튼, 입력 필드, 선택 팝업 -->
+    <dimen name="radius_large">16dp</dimen>      <!-- 일반 데이터/서브 카드, 모달 -->
+    <dimen name="radius_xlarge">24dp</dimen>     <!-- 웹 스타일 메인 히어로 카드, 바텀시트 상단 -->
+    <dimen name="radius_pill">999dp</dimen>      <!-- 캡슐형 버튼 및 아바타 -->
+
+    <!-- 모듈별 권장 적용 값 -->
+    <dimen name="card_corner_radius">@dimen/radius_xlarge</dimen>
+    <dimen name="card_corner_radius_small">@dimen/radius_large</dimen>
+    <dimen name="button_corner_radius">@dimen/radius_medium</dimen>
+    <dimen name="button_corner_radius_pill">@dimen/radius_pill</dimen>
+
+    <!-- =================================================================== -->
+    <!-- Layout Margins & Padding Tokens                                    -->
+    <!-- =================================================================== -->
+    <dimen name="screen_margin_horizontal">20dp</dimen>   <!-- 화면 좌우 기본 여백 (웹의 여유로운 여백 반영) -->
+    <dimen name="screen_margin_vertical">16dp</dimen>     <!-- 화면 상하 기본 여백 -->
+    <dimen name="card_internal_padding">16dp</dimen>       <!-- 일반 카드 내부 패딩 -->
+    <dimen name="card_internal_padding_large">20dp</dimen> <!-- 대형 프로필/대시보드 카드 내부 패딩 -->
+    <dimen name="dialog_internal_padding">24dp</dimen>     <!-- 다이얼로그/팝업 내부 패딩 -->
+
+    <!-- =================================================================== -->
+    <!-- Component Dimensions                                               -->
+    <!-- =================================================================== -->
+    <dimen name="button_height_default">52dp</dimen>      <!-- 모바일 터치 최적화 기본 버튼 높이 -->
+    <dimen name="button_height_small">40dp</dimen>        <!-- 소형 보조 버튼 높이 -->
+    <dimen name="button_padding_horizontal">20dp</dimen>
+    <dimen name="button_padding_vertical">12dp</dimen>
+
+    <dimen name="input_field_height">52dp</dimen>
+    <dimen name="chip_height">36dp</dimen>
+
+    <dimen name="icon_size_small">16dp</dimen>
+    <dimen name="icon_size_medium">24dp</dimen>
+    <dimen name="icon_size_large">32dp</dimen>
+    <dimen name="icon_size_xlarge">48dp</dimen>
+
+    <dimen name="avatar_size_small">32dp</dimen>
+    <dimen name="avatar_size_medium">48dp</dimen>
+    <dimen name="avatar_size_large">64dp</dimen>
+    <dimen name="plant_image_size_thumb">80dp</dimen>
+
+    <!-- =================================================================== -->
+    <!-- Elevation / Shadow Tokens (웹의 부드러운 입체감)                   -->
+    <!-- =================================================================== -->
+    <dimen name="elevation_none">0dp</dimen>
+    <dimen name="elevation_card_flat">0dp</dimen>       <!-- 아웃라인 카드용 -->
+    <dimen name="elevation_card_low">2dp</dimen>        <!-- 일반 부드러운 카드 그림자 -->
+    <dimen name="elevation_card_medium">4dp</dimen>     <!-- 플로팅/강조 카드 그림자 -->
+    <dimen name="elevation_button">2dp</dimen>
+    <dimen name="elevation_fab">6dp</dimen>
+    <dimen name="elevation_dialog">12dp</dimen>
+    <dimen name="elevation_bottom_sheet">16dp</dimen>
+
+    <!-- =================================================================== -->
+    <!-- Typography Scale Tokens (sp)                                       -->
+    <!-- =================================================================== -->
+    <dimen name="text_size_display">32sp</dimen>         <!-- 대형 타이틀/숫자 강조 -->
+    <dimen name="text_size_headline_large">24sp</dimen>  <!-- 메인 화면 헤더 -->
+    <dimen name="text_size_headline_medium">20sp</dimen> <!-- 섹션 제목 -->
+    <dimen name="text_size_title_large">18sp</dimen>     <!-- 카드 제목, 모달 제목 -->
+    <dimen name="text_size_title_medium">16sp</dimen>    <!-- 서브 그룹 제목 -->
+    <dimen name="text_size_body_large">16sp</dimen>      <!-- 본문 강조 -->
+    <dimen name="text_size_body_medium">14sp</dimen>     <!-- 기본 본문 텍스트 -->
+    <dimen name="text_size_label_large">14sp</dimen>     <!-- 버튼 텍스트, 탭 라벨 -->
+    <dimen name="text_size_label_medium">12sp</dimen>    <!-- 칩 텍스트, 태그 -->
+    <dimen name="text_size_caption">11sp</dimen>         <!-- 캡션, 타임스탬프, 타임라인 -->
+</resources>

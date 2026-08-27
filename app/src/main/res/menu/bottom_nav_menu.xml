@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_crops"
+        android:icon="@drawable/ic_tab_crops"
+        android:title="나의 작물" />
+
+    <item
+        android:id="@+id/navigation_growth"
+        android:icon="@drawable/ic_tab_growth"
+        android:title="생육기록" />
+
+    <item
+        android:id="@+id/navigation_sensor"
+        android:icon="@drawable/ic_tab_sensor"
+        android:title="센서 알림" />
+
+    <item
+        android:id="@+id/navigation_ask"
+        android:icon="@drawable/ic_tab_ask"
+        android:title="AI 묻다" />
+</menu>

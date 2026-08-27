@@ -1,9 +1,67 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Mobile_app" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- Base Kiuda Material 3 Theme -->
+    <style name="Base.Theme.Kiuda" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Color System Attributes -->
+        <item name="colorPrimary">@color/kiuda_primary</item>
+        <item name="colorOnPrimary">@color/kiuda_on_primary</item>
+        <item name="colorPrimaryContainer">@color/kiuda_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/kiuda_on_primary_container</item>
+
+        <item name="colorSecondary">@color/kiuda_secondary</item>
+        <item name="colorOnSecondary">@color/kiuda_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/kiuda_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/kiuda_on_secondary_container</item>
+
+        <item name="colorTertiary">@color/kiuda_tertiary</item>
+        <item name="colorOnTertiary">@color/kiuda_on_tertiary</item>
+        <item name="colorTertiaryContainer">@color/kiuda_tertiary_container</item>
+        <item name="colorOnTertiaryContainer">@color/kiuda_on_tertiary_container</item>
+
+        <item name="android:colorBackground">@color/kiuda_background</item>
+        <item name="colorOnBackground">@color/kiuda_on_background</item>
+
+        <item name="colorSurface">@color/kiuda_surface</item>
+        <item name="colorOnSurface">@color/kiuda_on_surface</item>
+        <item name="colorSurfaceVariant">@color/kiuda_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/kiuda_on_surface_variant</item>
+
+        <item name="colorOutline">@color/kiuda_outline</item>
+        <item name="colorOutlineVariant">@color/kiuda_outline_variant</item>
+
+        <item name="colorError">@color/kiuda_error</item>
+        <item name="colorOnError">@color/kiuda_on_error</item>
+        <item name="colorErrorContainer">@color/kiuda_error_container</item>
+        <item name="colorOnErrorContainer">@color/kiuda_on_error_container</item>
+
+        <!-- System Window Decor -->
+        <item name="android:statusBarColor">@color/kiuda_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/kiuda_background</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Component Styling Defaults -->
+        <item name="materialCardViewStyle">@style/Widget.Kiuda.Card</item>
+        <item name="materialButtonStyle">@style/Widget.Kiuda.Button.Primary</item>
+        <item name="textInputStyle">@style/Widget.Kiuda.TextInputLayout.OutlinedBox</item>
+        <item name="chipStyle">@style/Widget.Kiuda.Chip.Filter</item>
+        <item name="circularProgressIndicatorStyle">@style/Widget.Kiuda.CircularProgressIndicator</item>
+        <item name="linearProgressIndicatorStyle">@style/Widget.Kiuda.LinearProgressIndicator</item>
     </style>
 
-    <style name="Theme.Mobile_app" parent="Base.Theme.Mobile_app" />
+    <!-- Public Theme -->
+    <style name="Theme.Kiuda" parent="Base.Theme.Kiuda" />
+
+    <!-- Splash Theme: 창 배경을 스플래시 배경(오프화이트 크림)으로 설정하여 하얀 깜빡임 방지 -->
+    <style name="Theme.Kiuda.Splash" parent="Base.Theme.Kiuda">
+        <item name="android:windowBackground">@color/kiuda_background</item>
+        <item name="android:statusBarColor">@color/kiuda_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/kiuda_background</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <!-- Backward Compatibility Aliases for Existing App Theme -->
+    <style name="Base.Theme.Mobile_app" parent="Base.Theme.Kiuda" />
+    <style name="Theme.Mobile_app" parent="Theme.Kiuda" />
+    <style name="Theme.Mobile_app.Splash" parent="Theme.Kiuda.Splash" />
 </resources>

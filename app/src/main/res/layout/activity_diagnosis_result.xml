@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:background="@color/kiuda_background">
+
+    <!-- 1. 상단 앱바 -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/kiuda_background"
+        app:title="온새미 진단 결과"
+        app:titleTextAppearance="@style/TextAppearance.Kiuda.TitleLarge"
+        app:titleTextColor="@color/kiuda_text_primary"
+        app:navigationIconTint="@color/kiuda_text_primary"
+        app:elevation="0dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="24dp">
+
+            <!-- 2. 온새미 인사 카드 -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Kiuda.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="@dimen/radius_xlarge"
+                app:cardElevation="@dimen/elevation_card_low"
+                app:strokeColor="@color/kiuda_outline_variant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <FrameLayout
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/bg_step_number_badge">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_kiuda_leaf"
+                                app:tint="@color/kiuda_primary" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="🌿 온새미 AI 진단"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kiuda_primary"
+                            android:background="@drawable/bg_pill_soft"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="5dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvGreeting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="사진을 살펴봤어요. 아래처럼 정리해 드릴게요."
+                        android:textSize="15sp"
+                        android:textColor="@color/kiuda_text_primary"
+                        android:lineSpacingExtra="4dp"
+                        android:includeFontPadding="false"
+                        tools:text="안녕하세요! 온새미가 식물 잎의 증상을 다각도로 분석했습니다." />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. 핵심 결과 카드 (추정 진단명 + 확신도) -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Kiuda.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="@dimen/radius_xlarge"
+                app:cardElevation="@dimen/elevation_card_low"
+                app:strokeColor="@color/kiuda_outline_variant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="추정 진단 결과"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kiuda_text_secondary" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tvConfidenceBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="높은 확신도"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kiuda_primary"
+                            android:background="@drawable/bg_pill_soft"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="3dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvDiagnosisName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="진단명"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/kiuda_text_primary"
+                        android:lineSpacingExtra="2dp"
+                        android:includeFontPadding="false"
+                        tools:text="토마토 점무늬병" />
+
+                    <!-- 확신도 프로그레스 바 영역 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="진단 확정 신뢰도"
+                            android:textSize="13sp"
+                            android:textColor="@color/kiuda_text_secondary" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/tvConfidence"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="확신도 85%"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kiuda_primary"
+                            tools:text="확신도 85%" />
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progressConfidence"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="12dp"
+                        android:layout_marginTop="8dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/bg_progress_confidence" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 4. 온새미의 분석 카드 -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Kiuda.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="@dimen/radius_xlarge"
+                app:cardElevation="@dimen/elevation_card_low"
+                app:strokeColor="@color/kiuda_outline_variant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🔍 온새미의 상세 분석"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kiuda_text_primary" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="14dp"
+                        android:background="@color/kiuda_outline_variant" />
+
+                    <TextView
+                        android:id="@+id/tvReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="@color/kiuda_text_primary"
+                        android:lineSpacingExtra="6dp"
+                        android:includeFontPadding="false"
+                        tools:text="잎 표면에 암갈색 점무늬가 발견되었습니다. 고온 다습한 환경에서 발생하기 쉬우며..." />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 5. 이렇게 해보면 좋아요 (조치 가이드 카드) -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Kiuda.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="@dimen/radius_xlarge"
+                app:cardElevation="@dimen/elevation_card_low"
+                app:strokeColor="@color/kiuda_outline_variant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌱 이렇게 해보면 좋아요"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/kiuda_text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="식물 건강을 되찾기 위한 단계별 권장 조치사항입니다."
+                        android:textSize="12sp"
+                        android:textColor="@color/kiuda_text_secondary" />
+
+                    <LinearLayout
+                        android:id="@+id/containerMethods"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="16dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 6. 전문가 안내 배너 및 하단 액션 버튼 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_pill_soft">
+
+                <TextView
+                    android:id="@+id/tvClosing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💡 최종 확진은 지역 농업 기술 센터 또는 전문가의 확인을 권장해요. 궁금한 점이 있으시면 언제든 다시 온새미에게 질문해 주세요!"
+                    android:textSize="13sp"
+                    android:textColor="@color/kiuda_on_primary_container"
+                    android:lineSpacingExtra="4dp"
+                    android:includeFontPadding="false" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEncyclopedia"
+                style="@style/Widget.Kiuda.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginBottom="10dp"
+                android:text="📖 공식 병해충 도감에서 보기"
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/kiuda_primary"
+                android:textColor="@color/kiuda_primary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClose"
+                style="@style/Widget.Kiuda.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="확인"
+                android:textStyle="bold"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

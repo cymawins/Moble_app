@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base Kiuda Root Namespace Style -->
+    <style name="Widget.Kiuda" parent="" />
+
+    <!-- Typography Appearances (Material 3 Typography Scale) -->
+    <style name="TextAppearance.Kiuda.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="android:textSize">@dimen/text_size_display</item>
+        <item name="android:textColor">@color/kiuda_text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Kiuda.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textSize">@dimen/text_size_headline_large</item>
+        <item name="android:textColor">@color/kiuda_text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Kiuda.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textSize">@dimen/text_size_headline_medium</item>
+        <item name="android:textColor">@color/kiuda_text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Kiuda.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">@dimen/text_size_title_large</item>
+        <item name="android:textColor">@color/kiuda_text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Kiuda.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textSize">@dimen/text_size_title_medium</item>
+        <item name="android:textColor">@color/kiuda_text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Kiuda.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">@dimen/text_size_body_large</item>
+        <item name="android:textColor">@color/kiuda_text_primary</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Kiuda.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">@dimen/text_size_body_medium</item>
+        <item name="android:textColor">@color/kiuda_text_secondary</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Kiuda.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textSize">@dimen/text_size_label_large</item>
+        <item name="android:textColor">@color/kiuda_text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Kiuda.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">@dimen/text_size_label_medium</item>
+        <item name="android:textColor">@color/kiuda_text_secondary</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TextAppearance.Kiuda.Caption" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textSize">@dimen/text_size_caption</item>
+        <item name="android:textColor">@color/kiuda_text_tertiary</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- =================================================================== -->
+    <!-- 1. Card Widget Styles                                              -->
+    <!-- =================================================================== -->
+
+    <!-- 기본 웹 스타일 프리미엄 카드: pure white background + 24dp rounding + 2dp elevation + subtle outline -->
+    <style name="Widget.Kiuda.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/kiuda_surface</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/elevation_card_low</item>
+        <item name="strokeColor">@color/kiuda_outline_variant</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="contentPadding">@dimen/card_internal_padding</item>
+    </style>
+
+    <!-- 플랫 아웃라인 카드: flat background + subtle stroke (탭 / 서브 리스트용) -->
+    <style name="Widget.Kiuda.Card.Outlined" parent="Widget.Material3.CardView.Outlined">
+        <item name="cardBackgroundColor">@color/kiuda_surface</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/elevation_none</item>
+        <item name="strokeColor">@color/kiuda_outline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="contentPadding">@dimen/card_internal_padding</item>
+    </style>
+
+    <!-- 하이라이트 배너 카드: 연한 세이지 민트 톤 배경 (식물 상태 요약/포인트 영역) -->
+    <style name="Widget.Kiuda.Card.Highlight" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/kiuda_primary_container</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/elevation_none</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="contentPadding">@dimen/card_internal_padding_large</item>
+    </style>
+
+    <!-- 알림/상태 카드 변형 (Alert Cards) -->
+    <style name="Widget.Kiuda.Card.Alert" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">@dimen/card_corner_radius_small</item>
+        <item name="cardElevation">@dimen/elevation_none</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="contentPadding">@dimen/card_internal_padding</item>
+    </style>
+
+    <style name="Widget.Kiuda.Card.Alert.Error" parent="Widget.Kiuda.Card.Alert">
+        <item name="cardBackgroundColor">@color/kiuda_error_container</item>
+        <item name="strokeColor">@color/kiuda_error</item>
+    </style>
+
+    <style name="Widget.Kiuda.Card.Alert.Warning" parent="Widget.Kiuda.Card.Alert">
+        <item name="cardBackgroundColor">@color/kiuda_warning_container</item>
+        <item name="strokeColor">@color/kiuda_warning</item>
+    </style>
+
+    <style name="Widget.Kiuda.Card.Alert.Info" parent="Widget.Kiuda.Card.Alert">
+        <item name="cardBackgroundColor">@color/kiuda_info_container</item>
+        <item name="strokeColor">@color/kiuda_info</item>
+    </style>
+
+    <style name="Widget.Kiuda.Card.Alert.Success" parent="Widget.Kiuda.Card.Alert">
+        <item name="cardBackgroundColor">@color/kiuda_success_container</item>
+        <item name="strokeColor">@color/kiuda_success</item>
+    </style>
+
+    <!-- =================================================================== -->
+    <!-- 2. Button Widget Styles                                             -->
+    <!-- =================================================================== -->
+
+    <style name="Widget.Kiuda.Button" parent="Widget.Material3.Button" />
+
+    <!-- Primary Button: 깊은 포레스트 그린 백그라운드 + 12dp 라운딩 -->
+    <style name="Widget.Kiuda.Button.Primary" parent="Widget.Kiuda.Button">
+        <item name="backgroundTint">@color/kiuda_primary</item>
+        <item name="android:textColor">@color/kiuda_on_primary</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:minHeight">@dimen/button_height_default</item>
+        <item name="android:paddingStart">@dimen/button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/button_padding_horizontal</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.LabelLarge</item>
+        <item name="elevation">@dimen/elevation_button</item>
+    </style>
+
+    <style name="Widget.Kiuda.Button.Primary.Pill" parent="Widget.Kiuda.Button.Primary">
+        <item name="cornerRadius">@dimen/button_corner_radius_pill</item>
+    </style>
+
+    <style name="Widget.Kiuda.Button.Primary.Small" parent="Widget.Kiuda.Button.Primary">
+        <item name="android:minHeight">@dimen/button_height_small</item>
+        <item name="android:paddingStart">@dimen/spacing_m</item>
+        <item name="android:paddingEnd">@dimen/spacing_m</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.LabelMedium</item>
+    </style>
+
+    <!-- Outlined Button: 은은한 외곽선 + Primary Text -->
+    <style name="Widget.Kiuda.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/kiuda_primary</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="android:textColor">@color/kiuda_primary</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:minHeight">@dimen/button_height_default</item>
+        <item name="android:paddingStart">@dimen/button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/button_padding_horizontal</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.LabelLarge</item>
+    </style>
+
+    <style name="Widget.Kiuda.Button.Outlined.Small" parent="Widget.Kiuda.Button.Outlined">
+        <item name="android:minHeight">@dimen/button_height_small</item>
+        <item name="android:paddingStart">@dimen/spacing_m</item>
+        <item name="android:paddingEnd">@dimen/spacing_m</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.LabelMedium</item>
+    </style>
+
+    <!-- Text Button: 투명 배경 + Primary Text -->
+    <style name="Widget.Kiuda.Button.Text" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">@color/kiuda_primary</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:minHeight">@dimen/button_height_default</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.LabelLarge</item>
+    </style>
+
+    <!-- Secondary / Tonal Button: 연한 민트 컨테이너 버튼 -->
+    <style name="Widget.Kiuda.Button.Secondary" parent="Widget.Material3.Button.TonalButton">
+        <item name="backgroundTint">@color/kiuda_primary_container</item>
+        <item name="android:textColor">@color/kiuda_on_primary_container</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:minHeight">@dimen/button_height_default</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.LabelLarge</item>
+    </style>
+
+    <style name="Widget.Kiuda.Button.Danger" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/kiuda_error</item>
+        <item name="android:textColor">@color/kiuda_on_error</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:minHeight">@dimen/button_height_default</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.LabelLarge</item>
+    </style>
+
+    <!-- =================================================================== -->
+    <!-- 3. Chip Widget Styles                                               -->
+    <!-- =================================================================== -->
+
+    <style name="Widget.Kiuda.Chip" parent="Widget.Material3.Chip.Filter" />
+
+    <!-- Material 3 Filter Chip Style -->
+    <style name="Widget.Kiuda.Chip.Filter" parent="Widget.Kiuda.Chip">
+        <item name="chipBackgroundColor">@color/selector_chip_filter_bg</item>
+        <item name="chipStrokeColor">@color/selector_chip_filter_stroke</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textColor">@color/selector_chip_filter_text</item>
+        <item name="chipCornerRadius">@dimen/radius_pill</item>
+        <item name="chipMinHeight">@dimen/chip_height</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.LabelMedium</item>
+    </style>
+
+    <!-- 상태 태그 / 레벨 표시 배지 (TextView 베이스) -->
+    <style name="Widget.Kiuda.Chip.Status" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_badge_info</item>
+        <item name="android:paddingHorizontal">@dimen/spacing_m</item>
+        <item name="android:paddingVertical">@dimen/spacing_xs</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.LabelMedium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Widget.Kiuda.Chip.Status.Success" parent="Widget.Kiuda.Chip.Status">
+        <item name="android:background">@drawable/bg_badge_success</item>
+        <item name="android:textColor">@color/kiuda_success</item>
+    </style>
+
+    <style name="Widget.Kiuda.Chip.Status.Warning" parent="Widget.Kiuda.Chip.Status">
+        <item name="android:background">@drawable/bg_badge_warning</item>
+        <item name="android:textColor">@color/kiuda_on_warning_container</item>
+    </style>
+
+    <style name="Widget.Kiuda.Chip.Status.Danger" parent="Widget.Kiuda.Chip.Status">
+        <item name="android:background">@drawable/bg_badge_danger</item>
+        <item name="android:textColor">@color/kiuda_error</item>
+    </style>
+
+    <style name="Widget.Kiuda.Chip.Status.Info" parent="Widget.Kiuda.Chip.Status">
+        <item name="android:background">@drawable/bg_badge_info</item>
+        <item name="android:textColor">@color/kiuda_on_info_container</item>
+    </style>
+
+    <!-- =================================================================== -->
+    <!-- 4. Alert / Status Inline Message Box Styles                         -->
+    <!-- =================================================================== -->
+
+    <style name="Widget.Kiuda.InlineAlert" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_inline_alert_info</item>
+        <item name="android:padding">@dimen/spacing_m</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.BodyMedium</item>
+        <item name="android:textColor">@color/kiuda_on_info_container</item>
+        <item name="android:drawablePadding">@dimen/spacing_s</item>
+    </style>
+
+    <style name="Widget.Kiuda.InlineAlert.Info" parent="Widget.Kiuda.InlineAlert">
+        <item name="android:background">@drawable/bg_inline_alert_info</item>
+        <item name="android:textColor">@color/kiuda_on_info_container</item>
+    </style>
+
+    <style name="Widget.Kiuda.InlineAlert.Warning" parent="Widget.Kiuda.InlineAlert">
+        <item name="android:background">@drawable/bg_inline_alert_warning</item>
+        <item name="android:textColor">@color/kiuda_on_warning_container</item>
+    </style>
+
+    <style name="Widget.Kiuda.InlineAlert.Error" parent="Widget.Kiuda.InlineAlert">
+        <item name="android:background">@drawable/bg_inline_alert_danger</item>
+        <item name="android:textColor">@color/kiuda_on_error_container</item>
+    </style>
+
+    <style name="Widget.Kiuda.InlineAlert.Success" parent="Widget.Kiuda.InlineAlert">
+        <item name="android:background">@drawable/bg_inline_alert_success</item>
+        <item name="android:textColor">@color/kiuda_on_success_container</item>
+    </style>
+
+    <!-- =================================================================== -->
+    <!-- 5. Input Widget Styles                                             -->
+    <!-- =================================================================== -->
+
+    <style name="Widget.Kiuda.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox" />
+
+    <style name="Widget.Kiuda.TextInputLayout.OutlinedBox" parent="Widget.Kiuda.TextInputLayout">
+        <item name="boxCornerRadiusTopStart">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_medium</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_medium</item>
+        <item name="boxStrokeColor">@color/kiuda_primary</item>
+        <item name="boxStrokeWidth">1.5dp</item>
+        <item name="boxBackgroundColor">@color/kiuda_surface</item>
+        <item name="hintTextColor">@color/kiuda_primary</item>
+        <item name="endIconTint">@color/kiuda_text_secondary</item>
+        <item name="startIconTint">@color/kiuda_text_secondary</item>
+    </style>
+
+    <style name="Widget.Kiuda.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/kiuda_text_primary</item>
+        <item name="android:textColorHint">@color/kiuda_text_tertiary</item>
+        <item name="android:textSize">@dimen/text_size_body_large</item>
+        <item name="android:padding">@dimen/spacing_m</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- =================================================================== -->
+    <!-- 6. Recommended Extra Widget Styles                                  -->
+    <!-- =================================================================== -->
+
+    <style name="Widget.Kiuda.TextView" parent="android:Widget.TextView" />
+
+    <!-- Section Header TextView Styles -->
+    <style name="Widget.Kiuda.TextView.SectionHeader" parent="Widget.Kiuda.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.HeadlineMedium</item>
+        <item name="android:textColor">@color/kiuda_text_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Widget.Kiuda.TextView.SectionSubHeader" parent="Widget.Kiuda.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.Kiuda.BodyMedium</item>
+        <item name="android:textColor">@color/kiuda_text_secondary</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Divider Style -->
+    <style name="Widget.Kiuda.Divider" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/kiuda_divider</item>
+    </style>
+
+    <!-- Circular Progress Indicator -->
+    <style name="Widget.Kiuda.CircularProgressIndicator" parent="Widget.Material3.CircularProgressIndicator">
+        <item name="indicatorColor">@color/kiuda_primary</item>
+        <item name="trackColor">@color/kiuda_primary_container</item>
+    </style>
+
+    <!-- Linear Progress Indicator -->
+    <style name="Widget.Kiuda.LinearProgressIndicator" parent="Widget.Material3.LinearProgressIndicator">
+        <item name="indicatorColor">@color/kiuda_primary</item>
+        <item name="trackColor">@color/kiuda_primary_container</item>
+    </style>
+
+</resources>

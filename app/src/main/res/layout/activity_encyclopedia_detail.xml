@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:background="@color/kiuda_background">
+
+    <!-- 1. 상단 앱바 -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/kiuda_background"
+        app:title="도감 상세"
+        app:titleTextAppearance="@style/TextAppearance.Kiuda.TitleLarge"
+        app:titleTextColor="@color/kiuda_text_primary"
+        app:navigationIconTint="@color/kiuda_text_primary"
+        app:elevation="0dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="32dp">
+
+            <!-- 2. 상단 병해충 헤더 정보 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tvMeta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="고추 · 병"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/kiuda_primary"
+                    android:background="@drawable/bg_pill_soft"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    tools:text="고추 · 병해충" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="탄저병"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/kiuda_text_primary"
+                    android:includeFontPadding="false"
+                    tools:text="고추 탄저병" />
+
+                <TextView
+                    android:id="@+id/tvScientific"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/kiuda_text_tertiary"
+                    android:textStyle="italic"
+                    tools:text="Colletotrichum acutatum" />
+            </LinearLayout>
+
+            <!-- 3. 섹션 1: 증상 -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Kiuda.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="@dimen/radius_xlarge"
+                app:cardElevation="@dimen/elevation_card_low"
+                app:strokeColor="@color/kiuda_outline_variant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔍 대표 증상"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/kiuda_text_primary" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@color/kiuda_outline_variant" />
+
+                    <TextView
+                        android:id="@+id/tvSymptoms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="@color/kiuda_text_primary"
+                        android:lineSpacingExtra="6dp"
+                        android:includeFontPadding="false"
+                        tools:text="과실에 암갈색의 오목하게 파인 수침상 점무늬가 나타나며, 전염이 진행되면 병반이 확대되어 썩게 됩니다." />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 4. 섹션 2: 발생 환경 -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Kiuda.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="@dimen/radius_xlarge"
+                app:cardElevation="@dimen/elevation_card_low"
+                app:strokeColor="@color/kiuda_outline_variant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌡️ 발생 환경"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/kiuda_text_primary" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@color/kiuda_outline_variant" />
+
+                    <TextView
+                        android:id="@+id/tvEnv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="@color/kiuda_text_primary"
+                        android:lineSpacingExtra="6dp"
+                        android:includeFontPadding="false"
+                        tools:text="고온 다습한 장마철 조건(온도 28~32°C, 상대습도 85% 이상)에서 포자飞散이 급격히 증가합니다." />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 5. 섹션 3: 방제 · 관리 -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Kiuda.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="@dimen/radius_xlarge"
+                app:cardElevation="@dimen/elevation_card_low"
+                app:strokeColor="@color/kiuda_outline_variant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🛠️ 방제 및 케어 방법"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/kiuda_text_primary" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@color/kiuda_outline_variant" />
+
+                    <LinearLayout
+                        android:id="@+id/containerControl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 6. 섹션 4: 예방 -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Kiuda.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="@dimen/radius_xlarge"
+                app:cardElevation="@dimen/elevation_card_low"
+                app:strokeColor="@color/kiuda_outline_variant"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🛡️ 사후 예방 수칙"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/kiuda_text_primary" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@color/kiuda_outline_variant" />
+
+                    <TextView
+                        android:id="@+id/tvPrevention"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textColor="@color/kiuda_text_primary"
+                        android:lineSpacingExtra="6dp"
+                        android:includeFontPadding="false"
+                        tools:text="병든 열매는 보이는 즉시 소각하거나 땅에 묻어 포자 이행을 차단하세요." />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 7. 출처 디스클레이머 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="※ 제공된 정보는 참고용이며, 등록 약제 사용 시 작물별 안전사용기준을 반드시 준수하세요. 출처: 농촌진흥청 NCPMS"
+                android:textSize="11sp"
+                android:textColor="@color/kiuda_text_tertiary"
+                android:lineSpacingExtra="3dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kiuda_background"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/screen_margin_horizontal"
+    android:paddingVertical="@dimen/screen_margin_vertical">
+
+    <TextView
+        style="@style/TextAppearance.Kiuda.HeadlineLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🤖 AI 묻다 (농업 챗봇 &amp; 병해충 진단)" />
+
+    <TextView
+        style="@style/TextAppearance.Kiuda.BodyMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="사진 촬영 또는 텍스트 입력으로 작물 상태를 질문하세요." />
+
+    <!-- Connected Sensor Context Badge (Dynamic) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_sensor_context"
+        style="@style/Widget.Kiuda.Card.Highlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_sensor_context_text"
+            style="@style/TextAppearance.Kiuda.BodyMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/kiuda_on_primary_container" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Chat Messages Scroll Container -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/container_messages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Input Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_camera"
+            style="@style/Widget.Kiuda.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📷 사진" />
+
+        <EditText
+            android:id="@+id/et_input"
+            style="@style/TextAppearance.Kiuda.BodyLarge"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/input_field_height"
+            android:layout_marginHorizontal="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_input_focused"
+            android:hint="작물 상태나 증상을 물어보세요..."
+            android:paddingHorizontal="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_send"
+            style="@style/Widget.Kiuda.Button.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전송" />
+    </LinearLayout>
+
+</LinearLayout>
